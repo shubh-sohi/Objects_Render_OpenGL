@@ -1,0 +1,17 @@
+#version 330 core
+
+// Interpolated values from the vertex shaders
+in vec3 fragmentColor;
+in vec2 t_coord;	//input the texture coordinates
+uniform sampler2D t_sampler;	//constant values for the texture!
+
+// Ouput data
+out vec4 color;
+
+void main(){
+
+	// Output color = color specified in the vertex shader, 
+	// interpolated between all 3 surrounding vertices
+	vec4 f_color = vec4(fragmentColor, 1);
+	color = texture(t_sampler, t_coord);
+}

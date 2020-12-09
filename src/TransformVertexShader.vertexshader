@@ -1,0 +1,30 @@
+#version 330 core
+
+// Input vertex data, different for all executions of this shader.
+layout(location = 0) in vec3 vertexPosition_modelspace;
+layout(location = 1) in vec3 vertexNormal_modelspace;
+layout(location = 2) in vec2 vTexCoord;
+
+// Output data ; will be interpolated for each fragment.
+out vec3 fragmentColor;
+out vec2 t_coord;
+
+// Values that stay constant for the whole mesh.
+uniform mat4 VP;
+uniform mat4 M;
+
+void main(){
+    
+    // TODO: Replace with Phong shading!
+
+    vec3 ModelColor = vec3(1, 1, 1);
+    vec4 l = normalize(M * vec4(vertexNormal_modelspace,0));
+    fragmentColor = ModelColor * max(0,l.x);
+    t_coord = vTexCoord;    
+
+	// Output position of the vertex, in clip space : MVP * position
+	gl_Position =  VP * M * vec4(vertexPosition_modelspace,1);
+    
+}
+
+

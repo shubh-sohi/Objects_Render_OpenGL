@@ -1,0 +1,6 @@
+1
+# red teapot
+meshes/teapot_uv.obj
+1 1 1 0 1 0 -90 1 -0 1
+0.1 0.1 0.1 0.9 0.1 0.1 1 1 1 100
+textures/ceramic.bmp
